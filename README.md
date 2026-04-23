@@ -10,6 +10,7 @@ Backend do MVP **multi-tenant** para laudos com **formulários dinâmicos**, **p
 - PostgreSQL + Flyway
 - JPA (Hibernate)
 - OpenAPI/Swagger UI (springdoc)
+- UUIDs time-ordered: **UUIDv7** (para melhor performance em índices)
 
 ## Multi-tenant (MVP)
 - Isolamento **row-level** via coluna `tenant_id`.

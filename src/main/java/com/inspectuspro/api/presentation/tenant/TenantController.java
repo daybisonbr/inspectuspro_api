@@ -4,6 +4,7 @@ import com.inspectuspro.api.infra.persistence.membership.MembershipEntity;
 import com.inspectuspro.api.infra.persistence.membership.MembershipJpaRepository;
 import com.inspectuspro.api.infra.persistence.tenant.TenantEntity;
 import com.inspectuspro.api.infra.persistence.tenant.TenantJpaRepository;
+import com.inspectuspro.api.common.id.IdGenerator;
 import jakarta.validation.constraints.NotBlank;
 import java.util.UUID;
 import org.springframework.http.ResponseEntity;
@@ -18,18 +19,20 @@ public class TenantController {
 
 	private final TenantJpaRepository tenants;
 	private final MembershipJpaRepository memberships;
+	private final IdGenerator ids;
 
-	public TenantController(TenantJpaRepository tenants, MembershipJpaRepository memberships) {
+	public TenantController(TenantJpaRepository tenants, MembershipJpaRepository memberships, IdGenerator ids) {
 		this.tenants = tenants;
 		this.memberships = memberships;
+		this.ids = ids;
 	}
 
 	@PostMapping("/tenants")
 	public ResponseEntity<CreateTenantResponse> create(@RequestBody CreateTenantRequest request, Authentication auth) {
 		UUID userId = (UUID) auth.getPrincipal();
-		UUID tenantId = UUID.randomUUID();
+		UUID tenantId = ids.newId();
 		tenants.save(new TenantEntity(tenantId, request.name()));
-		memberships.save(new MembershipEntity(UUID.randomUUID(), tenantId, userId, true));
+		memberships.save(new MembershipEntity(ids.newId(), tenantId, userId, true));
 		return ResponseEntity.status(201).body(new CreateTenantResponse(tenantId.toString()));
 	}
 
