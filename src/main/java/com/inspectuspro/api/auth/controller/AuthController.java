@@ -1,7 +1,7 @@
-package com.inspectuspro.api.presentation.auth;
+package com.inspectuspro.api.auth.controller;
 
-import com.inspectuspro.api.infra.persistence.user.UserJpaRepository;
-import com.inspectuspro.api.infra.security.JwtService;
+import com.inspectuspro.api.security.service.JwtService;
+import com.inspectuspro.api.user.repository.UserRepository;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.http.ResponseEntity;
@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AuthController {
 
-	private final UserJpaRepository users;
+	private final UserRepository users;
 	private final PasswordEncoder passwordEncoder;
 	private final JwtService jwtService;
 
-	public AuthController(UserJpaRepository users, PasswordEncoder passwordEncoder, JwtService jwtService) {
+	public AuthController(UserRepository users, PasswordEncoder passwordEncoder, JwtService jwtService) {
 		this.users = users;
 		this.passwordEncoder = passwordEncoder;
 		this.jwtService = jwtService;

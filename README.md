@@ -16,6 +16,13 @@ Backend do MVP **multi-tenant** para laudos com **formulários dinâmicos**, **p
 - Isolamento **row-level** via coluna `tenant_id`.
 - O tenant será identificado por header: `X-Tenant-Id`.
 
+## Estrutura de pacotes (camadas por feature)
+- `auth/` (controller, service, dto)
+- `user/` (repository, service, dto, enums)
+- `tenant/` (controller, repository, service, dto, enums)
+- `security/` (config, filter, service)
+- `common/` (infra compartilhada: ids, etc.)
+
 ## Endpoints (MVP inicial)
 - `POST /auth/login` (público): `{ "email": "...", "password": "..." }` → `{ "accessToken": "..." }`
 - `POST /tenants` (auth): `{ "name": "..." }` → `{ "tenantId": "..." }`

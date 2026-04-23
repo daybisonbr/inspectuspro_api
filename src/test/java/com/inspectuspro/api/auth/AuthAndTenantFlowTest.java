@@ -4,8 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.inspectuspro.api.infra.persistence.user.UserEntity;
-import com.inspectuspro.api.infra.persistence.user.UserJpaRepository;
+import com.inspectuspro.api.user.repository.UserEntity;
+import com.inspectuspro.api.user.repository.UserRepository;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -21,7 +21,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 class AuthAndTenantFlowTest {
 
 	@Autowired
-	UserJpaRepository users;
+	UserRepository users;
 
 	@LocalServerPort
 	int port;

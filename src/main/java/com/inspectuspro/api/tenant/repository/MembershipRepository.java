@@ -1,10 +1,10 @@
-package com.inspectuspro.api.infra.persistence.membership;
+package com.inspectuspro.api.tenant.repository;
 
 import java.util.List;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface MembershipJpaRepository extends JpaRepository<MembershipEntity, UUID> {
+public interface MembershipRepository extends JpaRepository<MembershipEntity, UUID> {
 	List<MembershipEntity> findAllByUserId(UUID userId);
 }
 

@@ -1,4 +1,4 @@
-package com.inspectuspro.api.infra.security;
+package com.inspectuspro.api.security.service;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;

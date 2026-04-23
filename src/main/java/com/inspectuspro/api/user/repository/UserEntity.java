@@ -1,4 +1,4 @@
-package com.inspectuspro.api.infra.persistence.user;
+package com.inspectuspro.api.user.repository;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

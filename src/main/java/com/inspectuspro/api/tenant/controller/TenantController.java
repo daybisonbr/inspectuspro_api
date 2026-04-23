@@ -1,10 +1,10 @@
-package com.inspectuspro.api.presentation.tenant;
+package com.inspectuspro.api.tenant.controller;
 
-import com.inspectuspro.api.infra.persistence.membership.MembershipEntity;
-import com.inspectuspro.api.infra.persistence.membership.MembershipJpaRepository;
-import com.inspectuspro.api.infra.persistence.tenant.TenantEntity;
-import com.inspectuspro.api.infra.persistence.tenant.TenantJpaRepository;
 import com.inspectuspro.api.common.id.IdGenerator;
+import com.inspectuspro.api.tenant.repository.MembershipEntity;
+import com.inspectuspro.api.tenant.repository.MembershipRepository;
+import com.inspectuspro.api.tenant.repository.TenantEntity;
+import com.inspectuspro.api.tenant.repository.TenantRepository;
 import jakarta.validation.constraints.NotBlank;
 import java.util.UUID;
 import org.springframework.http.ResponseEntity;
@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TenantController {
 
-	private final TenantJpaRepository tenants;
-	private final MembershipJpaRepository memberships;
+	private final TenantRepository tenants;
+	private final MembershipRepository memberships;
 	private final IdGenerator ids;
 
-	public TenantController(TenantJpaRepository tenants, MembershipJpaRepository memberships, IdGenerator ids) {
+	public TenantController(TenantRepository tenants, MembershipRepository memberships, IdGenerator ids) {
 		this.tenants = tenants;
 		this.memberships = memberships;
 		this.ids = ids;

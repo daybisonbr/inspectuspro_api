@@ -1,5 +1,6 @@
-package com.inspectuspro.api.infra.security;
+package com.inspectuspro.api.security.config;
 
+import com.inspectuspro.api.security.filter.JwtAuthFilter;
 import java.time.Clock;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
