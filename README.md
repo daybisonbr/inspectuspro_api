@@ -15,6 +15,11 @@ Backend do MVP **multi-tenant** para laudos com **formulários dinâmicos**, **p
 - Isolamento **row-level** via coluna `tenant_id`.
 - O tenant será identificado por header: `X-Tenant-Id`.
 
+## Endpoints (MVP inicial)
+- `POST /auth/login` (público): `{ "email": "...", "password": "..." }` → `{ "accessToken": "..." }`
+- `POST /tenants` (auth): `{ "name": "..." }` → `{ "tenantId": "..." }`
+- `GET /tenants` (auth): lista os tenants que o usuário participa
+
 ## Como rodar testes
 No Windows (PowerShell), garanta `JAVA_HOME` e execute:
 
