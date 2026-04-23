@@ -28,6 +28,10 @@ Backend do MVP **multi-tenant** para laudos com **formulários dinâmicos**, **p
 - `POST /tenants` (auth): `{ "name": "..." }` → `{ "tenantId": "..." }`
 - `GET /tenants` (auth): lista os tenants que o usuário participa
 - `GET /tenant/members` (auth): requer `X-Tenant-Id` e permissão `USERS_READ` (ou ser owner)
+- `POST /forms` (auth): requer `X-Tenant-Id` e permissão `FORMS_WRITE`
+- `GET /forms` (auth): requer `X-Tenant-Id` e permissão `FORMS_READ`
+- `POST /forms/{formId}/versions` (auth): requer `X-Tenant-Id` e permissão `FORMS_WRITE` (publica versão)
+- `POST /forms/{formId}/submissions` (auth): requer `X-Tenant-Id` e permissão `SUBMISSIONS_CREATE`
 
 ## Como rodar testes
 No Windows (PowerShell), garanta `JAVA_HOME` e execute:
